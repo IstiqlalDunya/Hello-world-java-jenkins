@@ -1,13 +1,14 @@
 pipeline {
-    agent any
+    agent any // deploy on any available agent
     stages {
-        stage('Checkout') {
+        stage('Checkout') { // Stage for checking out the code from the repository
             steps {
-                git branch: 'master', url: 'https://github.com/nawaf83/hello-world-java1.git'
+                git branch: 'master', url: 'https://github.com/IstiqlalDunya/Hello-world-java-jenkins.git'
             }
         }
         stage('Build') {
-            steps { bat 'gradlew clean build'}
+            steps { bat 'gradlew clean build'} 
+            // use {powershell 'gradle clean build'} to run local machine's Gradle version.
         }
         stage('Test') {
             steps { bat 'gradlew test'}
